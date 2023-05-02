@@ -1,0 +1,168 @@
+dimarts, 2 de maig de 2023, 20:50:25 UTC
+HOSTNAME
+admin.gsx.int
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-05-02 20:50 UTC
+Nmap scan report for correu.gsx.int (192.168.0.1)
+Host is up (0.000043s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+53/tcp open  domain
+MAC Address: D2:41:2F:3F:9C:A5 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
+
+RESOLVCONF
+domain gsx.int
+search gsx.int. gsx.gei.
+nameserver 192.168.0.1
+
+lease {
+  interface "eth0";
+  fixed-address 192.168.63.254;
+  option subnet-mask 255.255.192.0;
+  option routers 192.168.0.1;
+  option dhcp-lease-time 464423655;
+  option dhcp-message-type 5;
+  option domain-name-servers 192.168.0.1;
+  option dhcp-server-identifier 192.168.0.1;
+  option domain-search "gsx.int.", "gsx.gei.";
+  option broadcast-address 192.168.63.255;
+  option host-name "admin";
+  option domain-name "gsx.int";
+  renew 5 2029/11/09 17:12:58;
+  rebind 2 2036/03/18 05:24:44;
+  expire never;
+}
+HOSTS
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+PING router.gsx.int (192.168.0.1) 56(84) bytes of data.
+
+--- router.gsx.int ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+PING admin.gsx.int (192.168.63.254) 56(84) bytes of data.
+
+--- admin.gsx.int ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.008/0.008/0.008/0.000 ms
+PING ldap.gsx.gei (203.0.113.62) 56(84) bytes of data.
+
+--- ldap.gsx.gei ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.050/0.050/0.050/0.000 ms
+BOAXFR1
+
+; <<>> DiG 9.16.33-Debian <<>> AXFR gsx.gei
+;; global options: +cmd
+gsx.gei.		86400	IN	SOA	ns.gsx.gei. root.ns.gsx.gei. 1 604800 86400 2419200 86400
+gsx.gei.		86400	IN	MX	10 correu.gsx.gei.
+gsx.gei.		86400	IN	NS	ns.gsx.gei.
+correu.gsx.gei.		86400	IN	A	203.0.113.33
+dhcp.gsx.gei.		86400	IN	A	203.0.113.33
+ldap.gsx.gei.		86400	IN	A	203.0.113.62
+ns.gsx.gei.		86400	IN	A	203.0.113.33
+pop3.gsx.gei.		86400	IN	CNAME	correu.gsx.gei.
+router.gsx.gei.		86400	IN	A	203.0.113.33
+smtp.gsx.gei.		86400	IN	CNAME	correu.gsx.gei.
+www.gsx.gei.		86400	IN	A	203.0.113.62
+gsx.gei.		86400	IN	SOA	ns.gsx.gei. root.ns.gsx.gei. 1 604800 86400 2419200 86400
+;; Query time: 4 msec
+;; SERVER: 192.168.0.1#53(192.168.0.1)
+;; WHEN: Tue May 02 20:50:25 UTC 2023
+;; XFR size: 12 records (messages 1, bytes 336)
+
+EOAXFR1
+
+BOAXFR2
+
+; <<>> DiG 9.16.37-Debian <<>> AXFR gsx.gei
+;; global options: +cmd
+gsx.gei.		86400	IN	SOA	ns.gsx.gei. root.ns.gsx.gei. 1 604800 86400 2419200 86400
+gsx.gei.		86400	IN	MX	10 correu.gsx.gei.
+gsx.gei.		86400	IN	NS	ns.gsx.gei.
+correu.gsx.gei.		86400	IN	A	203.0.113.33
+dhcp.gsx.gei.		86400	IN	A	203.0.113.33
+ldap.gsx.gei.		86400	IN	A	203.0.113.62
+ns.gsx.gei.		86400	IN	A	203.0.113.33
+pop3.gsx.gei.		86400	IN	CNAME	correu.gsx.gei.
+router.gsx.gei.		86400	IN	A	203.0.113.33
+smtp.gsx.gei.		86400	IN	CNAME	correu.gsx.gei.
+www.gsx.gei.		86400	IN	A	203.0.113.62
+gsx.gei.		86400	IN	SOA	ns.gsx.gei. root.ns.gsx.gei. 1 604800 86400 2419200 86400
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue May 02 20:50:27 UTC 2023
+;; XFR size: 12 records (messages 1, bytes 336)
+
+
+; <<>> DiG 9.16.37-Debian <<>> AXFR 113.0.203.in-addr.arpa.
+;; global options: +cmd
+113.0.203.in-addr.arpa.	86400	IN	SOA	ns.gsx.int. root.ns.gsx.int. 1 604800 86400 2419200 86400
+113.0.203.in-addr.arpa.	86400	IN	NS	ns.gsx.gei.
+33.113.0.203.in-addr.arpa. 86400 IN	PTR	ns.gsx.gei.
+62.113.0.203.in-addr.arpa. 86400 IN	PTR	www.gsx.gei.
+62.113.0.203.in-addr.arpa. 86400 IN	PTR	ldap.gsx.gei.
+113.0.203.in-addr.arpa.	86400	IN	SOA	ns.gsx.int. root.ns.gsx.int. 1 604800 86400 2419200 86400
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue May 02 20:50:27 UTC 2023
+;; XFR size: 6 records (messages 1, bytes 247)
+
+
+; <<>> DiG 9.16.37-Debian <<>> AXFR gsx.int
+;; global options: +cmd
+gsx.int.		86400	IN	SOA	ns.gsx.int. root.ns.gsx.int. 1 604800 86400 2419200 86400
+gsx.int.		86400	IN	MX	10 correu.gsx.int.
+gsx.int.		86400	IN	NS	ns.gsx.int.
+admin.gsx.int.		86400	IN	A	192.168.63.254
+correu.gsx.int.		86400	IN	A	192.168.0.1
+dhcp.gsx.int.		86400	IN	A	192.168.0.1
+ns.gsx.int.		86400	IN	A	192.168.0.1
+pc1.gsx.int.		86400	IN	A	192.168.0.2
+pc10.gsx.int.		86400	IN	A	192.168.0.11
+pc11.gsx.int.		86400	IN	A	192.168.0.12
+pc12.gsx.int.		86400	IN	A	192.168.0.13
+pc13.gsx.int.		86400	IN	A	192.168.0.14
+pc14.gsx.int.		86400	IN	A	192.168.0.15
+pc15.gsx.int.		86400	IN	A	192.168.0.16
+pc2.gsx.int.		86400	IN	A	192.168.0.3
+pc3.gsx.int.		86400	IN	A	192.168.0.4
+pc4.gsx.int.		86400	IN	A	192.168.0.5
+pc5.gsx.int.		86400	IN	A	192.168.0.6
+pc6.gsx.int.		86400	IN	A	192.168.0.7
+pc7.gsx.int.		86400	IN	A	192.168.0.8
+pc8.gsx.int.		86400	IN	A	192.168.0.9
+pc9.gsx.int.		86400	IN	A	192.168.0.10
+pop3.gsx.int.		86400	IN	CNAME	correu.gsx.int.
+router.gsx.int.		86400	IN	A	192.168.0.1
+smtp.gsx.int.		86400	IN	CNAME	correu.gsx.int.
+gsx.int.		86400	IN	SOA	ns.gsx.int. root.ns.gsx.int. 1 604800 86400 2419200 86400
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue May 02 20:50:27 UTC 2023
+;; XFR size: 26 records (messages 1, bytes 623)
+
+
+; <<>> DiG 9.16.37-Debian <<>> AXFR 168.192.in-addr.arpa.
+;; global options: +cmd
+168.192.IN-ADDR.ARPA.	86400	IN	SOA	168.192.IN-ADDR.ARPA. . 0 28800 7200 604800 86400
+168.192.IN-ADDR.ARPA.	86400	IN	NS	168.192.IN-ADDR.ARPA.
+0.168.192.IN-ADDR.ARPA.	86400	IN	NS	.
+168.192.IN-ADDR.ARPA.	86400	IN	SOA	168.192.IN-ADDR.ARPA. . 0 28800 7200 604800 86400
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue May 02 20:50:27 UTC 2023
+;; XFR size: 4 records (messages 1, bytes 196)
+
+EOAXFR2
+
+HOSTINET
+;; connection timed out; no servers could be reached
+
+

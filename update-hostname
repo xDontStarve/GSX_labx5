@@ -1,0 +1,44 @@
+#!/bin/sh 
+# Filename:     /etc/dhcp/dhclient-exit-hooks.d/update-hostname
+# Purpose:      Sourced by dhclient-script to set the hostname of the system 
+#      to match the DNS information for the host as provided by  DHCP. 
+
+# SEE ALSO: man dhclient-script
+
+# Do not update hostname for virtual machine IP assignments 
+if [ "$interface" != "eth0" ]
+then 
+    return 
+fi 
+case $reason in
+	BOUND|RENEW|REBIND|REBOOT)
+		;;
+	*)
+		return
+		;;
+esac
+
+echo Executant dhclient-exit-hooks.d/hostname:
+echo IP= $new_ip_address
+echo MASK= $new_subnet_mask
+echo Hostname= $new_host_name
+echo Domain= $new_domain_name
+echo Domain Search= $new_domain_search
+echo DNS= $new_domain_name_servers
+echo Gateway= $new_routers
+echo 
+
+if [ -z ${new_host_name} ]; then
+	# no hem rebut el nom per DHCP
+	# consultem si tenim nom al DNS
+	echo Obtenint el nom des del DNS ...
+	new_host_name=$(dig +short -x $new_ip_address | sed "s/\.$//")
+fi
+
+if [ ! -z ${new_host_name} ]; then
+	# canviar el hostname de forma que coincideixin static == transient
+	echo ${new_host_name} > /etc/hostname 
+	hostname ${new_host_name} 
+	# test nameserver
+	# host $new_ip_address
+fi
